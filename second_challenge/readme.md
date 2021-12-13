@@ -6,8 +6,7 @@ The code allows for a particular data key to be retrieved individually
 
 <h2>SOLUTION</h2>
 
-I have written this script in powershell using Az and Az.ResourceGraph Module.
-
+<b>I have written this script in powershell using Az and Az.ResourceGraph Module. I have used Managed Service Identity to login to Azure Resource Manager.</b>
 
     .SYNOPSIS
         A script to query metadate of an azure virtual machine.
