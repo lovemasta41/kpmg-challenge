@@ -70,7 +70,7 @@ Data Tier Summary:
 1. We deploy our database servers with a scale set inside the data tier subnet.
 2. Another dedicated NSG will be deployed to allow traffic from business to data tier.
 
-Only the application servers in the business tier should be allowed to connect to the databases. <b>You can also allow database administration from restricted & trusted sources<b>.
+Only the application servers in the business tier should be allowed to connect to the databases. <b>You can also allow database administration from restricted & trusted sources</b>.
 
 Following trafficc will be allowed in the data tier NSG:
 
