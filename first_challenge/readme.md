@@ -18,9 +18,9 @@ I have created three modules for each tier in the solution and they are being in
 
 Directory Structure:
 
-<b>outputs.tf</b>: Returns ip address of public facing load balancer\n
-<b>resources.tf</b>: config. file to create required resources.\n
-<b>variables.tf</b>: file containing variables required for this module.\n
+1. <b>outputs.tf</b>: Returns ip address of public facing load balancer.
+2. <b>resources.tf</b>: config. file to create required resources.
+3. <b>variables.tf</b>: file containing variables required for this module.
 
 Web Tier Summary:
 
@@ -41,8 +41,8 @@ If web traffic comes in through the external load balancer then it will be allow
 
 Directory Structure:
 
-<b>resources.tf</b>: config. file to create required resources.
-<b>variables.tf</b>: file containing variables required for this module.
+1. <b>resources.tf</b>: config. file to create required resources.
+2. <b>variables.tf</b>: file containing variables required for this module.
 
 Business Tier Summary:
 
@@ -62,8 +62,8 @@ All traffic from web tier to business tier is allowed on port 80.
 
 Directory Structure:
 
-<b>resources.tf</b>: config. file to create required resources.
-<b>variables.tf</b>: file containing variables required for this module.
+1. <b>resources.tf</b>: config. file to create required resources.
+2. <b>variables.tf</b>: file containing variables required for this module.
 
 Data Tier Summary:
 
