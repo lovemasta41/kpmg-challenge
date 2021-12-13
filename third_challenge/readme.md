@@ -16,7 +16,7 @@ We would like to see some tests. A quick read to help you along the way
 
 <h3>Test Case 1</h3>
 
-<b>Input Object:\n</b>
+<b>Input Object:</b>
 "
 $customObject = [ordered]@{
     
@@ -40,7 +40,7 @@ $customObject = [ordered]@{
 
 <h3>Test Case 2</h3>
 
-<b>Input Object:\n</b>
+<b>Input Object:</b>
 "
 $customObject = [ordered]@{
     
@@ -52,14 +52,34 @@ $customObject = [ordered]@{
 }
 
 <b>Input Key</b>
-"c"
+"b"
 
 <b>Output:</b>
 
-"d"
-
+{
+    "c":  "d"
+}
 
 <h3>Test Case 3</h3>
+
+<b>Input Object:</b>
+"
+$customObject = [ordered]@{
+    
+    "a" = [ordered]@{
+            "b" = [ordered]@{
+                    "c" = "d"
+                  }
+          }
+}
+"
+<b>Input Key</b>
+"c"
+
+<b>Output:</b>
+"d"
+
+<h3>Test Case 4</h3>
 
 <b>Input Object:</b>
 "
@@ -76,5 +96,4 @@ $customObject = [ordered]@{
 "d"
 
 <b>Output:</b>
-
 "Required key not found in the object."

@@ -7,7 +7,7 @@ $customObject = [ordered]@{
                   }
           }
 },
-$inputkey = "d"
+$inputkey = "b"
 )
 
 #region Functions
