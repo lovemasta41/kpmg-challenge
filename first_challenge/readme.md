@@ -12,9 +12,9 @@ A 3-tier application architecture is a modular client-server architecture that c
 
 This architecture consists of three tiers i.e. web, business and data tier. Each tier has its own load balancer, subnet, virtual machines deployed in a scale set and network security group.
 
-I have created three modules for each tier in the solution and they are being invoked using main.tf inside deploy-three-tier-architecture directory.
+I have created three modules for each tier in the solution using terraform and they are being invoked using main.tf inside deploy-three-tier-architecture directory.
 
-<h3>Web Tier Module</h3>
+<h3>Web Tier Terraform Module</h3>
 
 Directory Structure:
 
@@ -37,7 +37,7 @@ Following rules will be applied in the web tier NSG:
 
 If web traffic comes in through the external load balancer then it will be allowed by one of those rules. We are creating a specific rule to allow probe traffic from the external load balancer; this is because the last rule will deny all other traffic from the virtual network. We don’t want any other traffic in the virtual network getting into these virtual machines.
 
-<h3>Business Tier</h3>
+<h3>Business Tier Terraform Module</h3>
 
 Directory Structure:
 
@@ -58,7 +58,7 @@ Following rules will be applied in the business tier NSG:
 
 All traffic from web tier to business tier is allowed on port 80.
 
-<h3>Data Tier</h3>
+<h3>Data Tier Terraform Module</h3>
 
 Directory Structure:
 
