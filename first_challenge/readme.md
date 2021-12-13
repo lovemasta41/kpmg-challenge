@@ -18,11 +18,9 @@ I have created three modules for each tier in the solution and they are being in
 
 Directory Structure:
 
-Name
-----
-outputs.tf
-resources.tf
-variables.tf
+<b>outputs.tf</b>: Returns ip address of public facing load balancer
+<b>resources.tf</b>: config. file to create required resources.
+<b>variables.tf</b>: file containing variables required for this module.
 
 Web Tier Summary:
 
@@ -43,10 +41,8 @@ If web traffic comes in through the external load balancer then it will be allow
 
 Directory Structure:
 
-Name
-----
-resources.tf
-variables.tf
+<b>resources.tf</b>: config. file to create required resources.
+<b>variables.tf</b>: file containing variables required for this module.
 
 Business Tier Summary:
 
@@ -66,10 +62,8 @@ All traffic from web tier to business tier is allowed on port 80.
 
 Directory Structure:
 
-Name
-----
-resources.tf
-variables.tf
+<b>resources.tf</b>: config. file to create required resources.
+<b>variables.tf</b>: file containing variables required for this module.
 
 Data Tier Summary:
 
@@ -99,7 +93,7 @@ variables.tf
 
 <b>main.tf</b>: Used to invoke all the three modules.
 <b>terraform.tfvars</b>: Used to provide inputs to the modules.
-<b>outputs.tf</b>: Used to print ip of public load balancerload balancer.
+<b>outputs.tf</b>: Used to print ip address of public load balancerload balancer.
 <b>providers.tf</b>: Used to provide authentication and subscription to azure resource manager.
 <b>terraform.tf</b>: Used to provide required providers information and terraform version
 <b>variables.tf</b>: Stores information fo variables required for the successful execution.
