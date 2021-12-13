@@ -91,10 +91,10 @@ terraform.tf
 terraform.tfvars
 variables.tf
 
-<b>main.tf</b>: Used to invoke all the three modules.
-<b>terraform.tfvars</b>: Used to provide inputs to the modules.
-<b>outputs.tf</b>: Used to print ip address of public load balancerload balancer.
-<b>providers.tf</b>: Used to provide authentication and subscription to azure resource manager.
-<b>terraform.tf</b>: Used to provide required providers information and terraform version
-<b>variables.tf</b>: Stores information fo variables required for the successful execution.
+1. <b>main.tf</b>: Used to invoke all the three modules.
+2. <b>terraform.tfvars</b>: Used to provide inputs to the modules.
+3. <b>outputs.tf</b>: Used to print ip address of public load balancerload balancer.
+4. <b>providers.tf</b>: Used to provide authentication and subscription to azure resource manager.
+5. <b>terraform.tf</b>: Used to provide required providers information and terraform version
+6. <b>variables.tf</b>: Stores information fo variables required for the successful execution.
 
