@@ -82,15 +82,6 @@ Following trafficc will be allowed in the data tier NSG:
 
 Directory Structure:
 
-Name
-----
-main.tf
-outputs.tf
-providers.tf
-terraform.tf
-terraform.tfvars
-variables.tf
-
 1. <b>main.tf</b>: Used to invoke all the three modules.
 2. <b>terraform.tfvars</b>: Used to provide inputs to the modules.
 3. <b>outputs.tf</b>: Used to print ip address of public load balancerload balancer.
