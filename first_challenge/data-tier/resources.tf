@@ -118,7 +118,7 @@ resource "azurerm_lb_rule" "data_tier_lbnatrule" {
    protocol                       = "Tcp"
    frontend_port                  = "80"
    backend_port                   = "80"
-   backend_address_pool_id        = azurerm_lb_backend_address_pool.data_tier_bapool.id
+   backend_address_pool_ids        = azurerm_lb_backend_address_pool.data_tier_bapool.id
    frontend_ip_configuration_name = "data_tier_PublicIPAddress"
    probe_id                       = azurerm_lb_probe.data_tier_lb_probe.id
 }

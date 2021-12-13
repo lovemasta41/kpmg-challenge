@@ -119,6 +119,7 @@ resource "azurerm_lb_rule" "business_tier_lbnatrule" {
    backend_port                   = "80"
    backend_address_pool_id        = azurerm_lb_backend_address_pool.business_tier_bapool.id
    probe_id                       = azurerm_lb_probe.business_tier_lb_probe.id
+   frontend_ip_configuration_name = ""
 }
 
 #business tier VMs created in a scale set
