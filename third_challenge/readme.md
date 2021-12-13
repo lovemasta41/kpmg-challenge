@@ -16,7 +16,7 @@ We would like to see some tests. A quick read to help you along the way
 
 <h3>Test Case 1</h3>
 
-<b>Input Object:</b>
+<b>Input Object:\n</b>
 "
 $customObject = [ordered]@{
     
@@ -38,9 +38,9 @@ $customObject = [ordered]@{
           }
 }
 
-<h3>Test Case 4</h3>
+<h3>Test Case 2</h3>
 
-<b>Input Object:</b>
+<b>Input Object:\n</b>
 "
 $customObject = [ordered]@{
     
@@ -50,7 +50,7 @@ $customObject = [ordered]@{
                   }
           }
 }
-"
+
 <b>Input Key</b>
 "c"
 
