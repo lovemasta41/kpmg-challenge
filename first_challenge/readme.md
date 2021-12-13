@@ -18,9 +18,9 @@ I have created three modules for each tier in the solution and they are being in
 
 Directory Structure:
 
-<b>outputs.tf</b>: Returns ip address of public facing load balancer
-<b>resources.tf</b>: config. file to create required resources.
-<b>variables.tf</b>: file containing variables required for this module.
+<b>outputs.tf</b>: Returns ip address of public facing load balancer\n
+<b>resources.tf</b>: config. file to create required resources.\n
+<b>variables.tf</b>: file containing variables required for this module.\n
 
 Web Tier Summary:
 
