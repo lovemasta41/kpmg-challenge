@@ -1,0 +1,8 @@
+# Ignore .terraform directory and lock file
+.terraform
+.terraform.lock.hcl
+
+# Ignore other files and directories as needed
+*.tfstate
+*.tfstate.backup
+*.tfvars
