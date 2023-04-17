@@ -7,7 +7,7 @@ param(
 )
 
 
-#Variables
+#VARIABLES
 $split_keys = $key -split ("/")
 $new_object = ConvertFrom-Json -InputObject $object
 
@@ -25,5 +25,5 @@ Function converter(){
     write-host $($new_object | ConvertTo-Json)
 }
 
-#Main
+#MAIN
 converter
