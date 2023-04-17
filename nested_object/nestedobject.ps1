@@ -11,6 +11,7 @@ param(
 $split_keys = $key -split ("/")
 $new_object = ConvertFrom-Json -InputObject $object
 
+#FUNCTIONS
 Function converter(){
     
     foreach($key in $split_keys){
