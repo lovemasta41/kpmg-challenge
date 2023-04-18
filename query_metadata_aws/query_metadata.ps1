@@ -17,7 +17,7 @@ Function metadata(){
     $response = Invoke-WebRequest -Method Get -Uri $url -Headers $headers -UseBasicParsing -ErrorAction SilentlyContinue
     $keys = $response.Content.Split([Environment]::NewLine)
 
-    $dictTable = @()
+    $dictTable = @{}
 
     foreach($key in $keys){
     
@@ -39,22 +39,53 @@ Function metadata(){
                             foreach($subchildKey in $subChildKeys){
                             
                                 $subchildKeyResponse = Invoke-WebRequest -method Get -uri "$url$key$subkey$childkey$subchildKey" -Headers $headers -UseBasicParsing -ErrorAction SilentlyContinue
-                                $hashSubChildKeyObject = [pscustomobject]@{
+                                $hashSubChildKeyObject = @{
             
                                     $subChildKey =  $subchildkeyResponse.Content
                                 }
-                                $dictTable += $hashSubChildKeyObject
+                                if($dictTable[$key] -ne $null -and $dictTable[$key].ContainsKey($subkey)){
+                                    
+                                    if($dictTable[$key][$subkey].Contains($childKey)){
+                                        
+                                        $dictTable[$key][$subkey][$childKey] += $hashSubChildKeyObject
+                                    }
+                                    else{
+                                        
+                                        $dictTable[$key][$subkey] = @{
+                                            
+                                            $childKey = $hashSubChildKeyObject
+                                        }
+                                    }
+                                }
+                                else{
+                                    
+                                    $dictTable[$key] = @{
+                                        
+                                        $subkey = @{
+                                            
+                                            $childKey = $hashSubChildKeyObject
+                                        }
+                                    }
+                                }
                             }
                         }
                         else{
                         
                             $childkeyResponse = Invoke-WebRequest -method Get -uri "$url$key$subkey$childkey" -Headers $headers -UseBasicParsing
-                            $hashChildKeyObject = [pscustomobject]@{
+                            $hashChildKeyObject = @{
             
-                                $childkey =  $childkeyResponse.Content
+                                $childKey =  $childkeyResponse.Content
                             }
-                            $dictTable += $hashChildKeyObject
-
+                            if($dictTable[$key] -ne $null -and $dictTable[$key].ContainsKey($subkey)){
+                                
+                                $dictTable[$key][$subkey] += $hashChildKeyObject
+                            }
+                            else{
+                                $dictTable[$key] += @{
+                                
+                                    $subkey = $hashChildKeyObject
+                                }
+                            }
 
                         }
                     }
@@ -71,20 +102,34 @@ Function metadata(){
                     else{
 
                         $subkeyResponse = Invoke-WebRequest -method Get -uri "$url$key$subkey" -Headers $headers -UseBasicParsing -ErrorAction SilentlyContinue
-                        $subKeyObject = [pscustomobject]@{
+                        $subKeyObject = @{
             
                             $subkey =  $subkeyResponse.Content
                         }
-                        $dictTable += $subKeyObject
+                        if($dictTable[$key] -ne $null -and $dictTable[$key].ContainsKey($subkey)){
+                                
+                            $dictTable[$key][$subkey] = $subkeyResponse.Content
+                        }
+                        else{
+                            
+                            $dictTable[$key] += $subKeyObject
+                            
+                        }
                     }
 
                     if($keyList){
                         
-                        $subKeyObject = [pscustomobject]@{
+                        $subKeyObject = @{
             
-                            $key.split("/")[0] =  $keyList
+                            $subkey =  $keyList
                         }
-                        $dictTable += $subKeyObject
+                        if($dictTable[$key] -ne $null -and $dictTable[$key].ContainsKey($subkey)){
+                                
+                            $dictTable[$key][$subkey] += $keyList
+                        }
+                        else{
+                            $dictTable[$key] += $subKeyObject
+                        }
 
                     }
                 }
@@ -95,7 +140,7 @@ Function metadata(){
         
             $keyResponse = Invoke-WebRequest -method Get -uri "$url$key" -Headers $headers -UseBasicParsing
         
-            $hashObject = [pscustomobject]@{
+            $hashObject = @{
             
                 $key =  $keyResponse.Content
             }
@@ -116,14 +161,40 @@ $metaData = metadata
 
 if($metaKey){
 
-    if($metaData.$metaKey){    
-        $metaData.$metaKey 
-    }
-    else{
-        "Provided key does not exist."
+    foreach($key in $metadata.Keys){
+    
+        if(($key -eq $metaKey) -or ($key.split("/")[0] -eq $metaKey)){
+        
+            $metaData[$key]
+            break
+        }
+        else{
+        
+            foreach($subkey in $metaData[$key].Keys){
+                
+                    if(($subkey -eq $metaKey) -or ($subkey.split("/")[0] -eq $metaKey)){
+                    
+                        $metaData[$key][$subkey]
+                        break
+                    }
+                    else{
+                    
+                        foreach($childkey in $metaData[$key][$subkey].keys){
+                    
+                            if(($childkey -eq $metaKey) -or ($childkey.split("/")[0] -eq $metaKey)){
+                            
+                                $metaData[$key][$subkey][$childkey]
+                                break
+                            }
+                        }
+                    }
+            }
+        
+        
+        }
     }
 }
 else{
     
-    $metadata | ConvertTo-Json
+    $metaData | ConvertTo-Json
 }

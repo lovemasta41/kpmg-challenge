@@ -5,8 +5,8 @@ Bonus Points:
 The code allows for a particular data key to be retrieved individually.
 
 # Solution
-A powershell script is created that prints meta data as json if no individual key is provided.   
-If a correct key is provided, its value will be printed ont he screen.  
+A powershell script is created assuming that it runs directly on the instance that prints meta data as json if no individual key is provided.   
+If a correct key is provided, its value will be printed on the screen.  
 If incorrect key is provided then error will be printed on the scren stating provided key does not exists.  
 
 # Outputs
