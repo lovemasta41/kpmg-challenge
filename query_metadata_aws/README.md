@@ -1,7 +1,7 @@
 # Problem Statement
 We need to write a code that will query the metadata of an instance within AWS or Azure or GCP and provide a json formatted output. 
 
-Bonus Points:  
+*Bonus Points:  *
 The code allows for a particular data key to be retrieved individually.
 
 # Solution
