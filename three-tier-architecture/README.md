@@ -1,7 +1,11 @@
-# IMPORTANT NOTES
-1. Reference for this 3 tier architecture is taken from below web blog where a Devops engineer has shown how to create three tier architecture using aws GUI.  
-https://towardsaws.com/aws-3-tier-architecture-63997b69ebc0
+# Problem Statement
+A 3-tier environment is a common setup. Use a tool of your familiarity create these resources on a cloud environment.
 
-2. I have converted those steps into terraform code with my own modifications.
+# Solution
+A 3 tier architecture is created with the help of terraform in AWS.  
+It comprises of a Web layer, Application Layer and Database Layer.  
+Each layer contains instances in two different subnets for high availability. 
+Some default values are selected for testing purpose only, else this architecture can be re created with same code in any other region as most of the required values are parameterized.  
 
-3. Architecture Diagram and Plan output is also uploaded in the repository.
+# Output
+Terraform plan output is attached for your reference.

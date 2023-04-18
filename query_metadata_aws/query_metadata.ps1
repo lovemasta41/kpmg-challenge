@@ -158,7 +158,7 @@ return $dictTable
 ##### Region MAIN
 
 $metaData = metadata
-
+$keyFound = 0
 if($metaKey){
 
     foreach($key in $metadata.Keys){
@@ -166,6 +166,7 @@ if($metaKey){
         if(($key -eq $metaKey) -or ($key.split("/")[0] -eq $metaKey)){
         
             $metaData[$key]
+            $keyFound = 1
             break
         }
         else{
@@ -175,6 +176,7 @@ if($metaKey){
                     if(($subkey -eq $metaKey) -or ($subkey.split("/")[0] -eq $metaKey)){
                     
                         $metaData[$key][$subkey]
+                        $keyFound = 1
                         break
                     }
                     else{
@@ -184,6 +186,7 @@ if($metaKey){
                             if(($childkey -eq $metaKey) -or ($childkey.split("/")[0] -eq $metaKey)){
                             
                                 $metaData[$key][$subkey][$childkey]
+                                $keyFound = 1
                                 break
                             }
                         }
@@ -193,6 +196,12 @@ if($metaKey){
         
         }
     }
+
+    if($keyFound -eq 0){
+
+        "Provided key not found, please check and provide again."
+    }
+
 }
 else{
     
