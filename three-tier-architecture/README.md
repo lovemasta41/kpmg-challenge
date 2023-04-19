@@ -7,7 +7,7 @@ A 3-tier environment is a common setup. Use a tool of your familiarity create th
 3. Each layer contains instances in two different subnets for high availability.  
 4. Web and application layer holds load balancer for routing traffic between instances.
 5. Application layer routes traffic to primary RDS database. 
-6. Some default values are selected for testing purpose only, else this architecture can be re created in other accounts and region with same PATERN as most of the required values are parameterized.  
+6. Some default values are selected for testing purpose only, else this architecture can be re created in other accounts and region with same PATTERN as most of the required values are parameterized.  
 
 # Output
 Terraform plan output is attached for your reference.
