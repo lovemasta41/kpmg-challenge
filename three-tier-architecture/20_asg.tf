@@ -14,9 +14,16 @@ resource "aws_security_group" "web_sg" {
       {
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
+        from_port   = 80
+        to_port     = 80
+        description = "Allow HTTP traffic from anywhere"
+      },
+      {
+        protocol    = "tcp"
+        cidr_blocks = ["10.0.0.0/8"]
         from_port   = 22
         to_port     = 22
-        description = "Allow SSH traffic from anywhere" 
+        description = "Allow SSH traffic from specific range" 
       }
     ], var.web_sg_rules)
   
@@ -65,6 +72,19 @@ resource "aws_launch_template" "web_launch_template"{
     {"Name" = "web-launch-template"}
   )
   user_data = filebase64("${path.module}/scripts/static_website.sh")
+}
+
+resource "aws_autoscaling_policy" "web-scaling-policy" {
+  name                   = "cpu-scaling-policy-web"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.web_asg.name
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50
+  }
 }
 
 resource "aws_autoscaling_group" "web_asg" {

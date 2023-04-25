@@ -70,6 +70,19 @@ resource "aws_launch_template" "app_launch_template"{
   user_data = filebase64("${path.module}/scripts/login_website.sh")
 }
 
+resource "aws_autoscaling_policy" "app-scaling-policy" {
+  name                   = "cpu-scaling-policy-app"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.app_asg.name
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50
+  }
+}
+
 resource "aws_autoscaling_group" "app_asg" {
   name                      = "app_asg"
   max_size                  = var.asg_max_size
